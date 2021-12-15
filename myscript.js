@@ -1,9 +1,43 @@
+let score = 0;
+let numOfPlays = 0;
+
 function computerPlay() {
     let arr = ["ROCK", "PAPER", "SCISSORS"];
-    return arr[Math.floor(Math.random() * arr.length)];
+    let choice = arr[Math.floor(Math.random() * arr.length)];
+    let imgClass = ".computers-move ." + choice.toLowerCase();
+    let img = document.querySelector(imgClass);
+    let imgs = document.querySelectorAll("img");
+    console.log(imgs);
+    imgs.forEach(element => {
+        element.style.border = "solid black";
+    });
+    img.style.border = "solid red";
+    return choice;
 }
 
 function playRound(playerSelection, computerSelection) {
+    let img = document.querySelector("img");
+    numOfPlays++;
+    if (numOfPlays >= 5) { 
+        numOfPlays = 0;
+        const result = document.querySelector(".result");
+        const scoreText = document.createElement("div");
+        scoreText.classList.add("scoreText");
+        scoreText.textContent = "Score: " + score;
+        result.appendChild(scoreText);
+        score = 0;
+        scoreText.style.border = "solid magenta";
+        scoreText.style.padding = "8px";
+        scoreText.style.color = "white";
+    }
+    let buttons = document.querySelectorAll("button");
+    buttons.forEach(element => {
+        element.style.border = "";
+    });
+
+    let pressedButton = document.querySelector("." + playerSelection.toLowerCase());
+    pressedButton.style.border = "solid blue";
+    
     playerSelection = playerSelection.toUpperCase();
     let result = -1;
     
@@ -36,29 +70,7 @@ function playRound(playerSelection, computerSelection) {
         default:
             break;
     }
-    if (result == 1) {
-        console.log("You win!");
-    }else if (result == 0) {
-        console.log("You lost!");
-    }else {
-        console.log("It's a tie...");
+    if (result === 1) {
+        score++;
     }
-
-    return result;
-}
-
-function game() {
-
-    let score = 0;
-    for (let index = 0; index < 5; index++) {
-        playerSelection = prompt("Please give your choice: ");
-        computerSelection = computerPlay();
-        let result = playRound(playerSelection, computerSelection);
-        if (result == 1) {
-            score++;
-        }
-    }
-    console.log("Score: ");
-    console.log(score);
-    
 }
