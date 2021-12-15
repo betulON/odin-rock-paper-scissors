@@ -5,10 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-    <script src="myscript.js"></script>
-
+    <link rel="stylesheet" href="styles.css">
+    <script src="myscript.js" defer></script>
 </head>
 <body>
-    <button onclick="game()">Play</button>
+    <div class="title">ROCK PAPER SCISSORS</div>
+    <div class="content">
+        <div class="player-choice">
+            <h1>PLAYER</h1>
+            <div class="players-move">
+                <button class="rock" onclick="playRound('ROCK', computerPlay())"></button>
+                <button class="paper" onclick="playRound('PAPER', computerPlay())"></button>
+                <button class="scissors" onclick="playRound('SCISSORS', computerPlay())"></button>
+            </div>
+        </div>
+        <div class="computer-choice">
+            <h1>COMPUTER</h1>
+            <div class="computers-move">
+                <img class="rock" src="img/rock.png" alt="Computer coice image">
+                <img class="paper" src="img/paper.png" alt="Computer coice image">
+                <img class="scissors" src="img/scissors.png" alt="Computer coice image">
+            </div>
+    
+        </div>
+    </div>
+    
+    
+    <div class="result">
+
+    </div>
+
+    <a href="https://www.vecteezy.com/vector-art/691497-rock-paper-scissors-neon-icons">Rock Paper Scissors Neon Icons Vectors by Vecteezy</a>
+    
 </body>
 </html>
