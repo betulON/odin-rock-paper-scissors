@@ -7,7 +7,6 @@ function computerPlay() {
     let imgClass = ".computers-move ." + choice.toLowerCase();
     let img = document.querySelector(imgClass);
     let imgs = document.querySelectorAll("img");
-    console.log(imgs);
     imgs.forEach(element => {
         element.style.border = "solid black";
     });
@@ -16,19 +15,25 @@ function computerPlay() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    let img = document.querySelector("img");
     numOfPlays++;
     if (numOfPlays >= 5) { 
         numOfPlays = 0;
         const result = document.querySelector(".result");
-        const scoreText = document.createElement("div");
-        scoreText.classList.add("scoreText");
+        let scoreText;
+        if (result.hasChildNodes()) {
+            scoreText = result.firstChild;
+        } else {
+            scoreText = document.createElement("div");
+            scoreText.classList.add("scoreText");
+            result.appendChild(scoreText);
+            scoreText.style.fontSize = "32px";
+            scoreText.style.border = "solid magenta";
+            scoreText.style.padding = "16px";
+            scoreText.style.color = "white";
+        }
         scoreText.textContent = "Score: " + score;
-        result.appendChild(scoreText);
         score = 0;
-        scoreText.style.border = "solid magenta";
-        scoreText.style.padding = "8px";
-        scoreText.style.color = "white";
+        
     }
     let buttons = document.querySelectorAll("button");
     buttons.forEach(element => {
