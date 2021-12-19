@@ -1,6 +1,10 @@
 let score = 0;
 let numOfPlays = 0;
 
+function addBorder(element, color) {
+    element.style.border = "solid " + color;
+}
+
 function computerPlay() {
     let arr = ["ROCK", "PAPER", "SCISSORS"];
     let choice = arr[Math.floor(Math.random() * arr.length)];
@@ -8,9 +12,9 @@ function computerPlay() {
     let img = document.querySelector(imgClass);
     let imgs = document.querySelectorAll("img");
     imgs.forEach(element => {
-        element.style.border = "solid black";
+        addBorder(element, "black")
     });
-    img.style.border = "solid red";
+    addBorder(img, "red");
     return choice;
 }
 
